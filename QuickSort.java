@@ -1,17 +1,15 @@
 public class QuickSort {
-
     public int partition(int A[], int low, int high) {
-        int pivot = A[low];      // Choose the first element as pivot
-        int i = low + 1;         // Pointer starting from left (after pivot)
-        int j = high;            // Pointer starting from right
+        int pivot = A[low];
+        int i = low + 1;        
+        int j = high;
 
-        // Repeat until i and j cross
         do {
-            // Move i forward until we find an element greater than pivot
+            
             while (i <= j && A[i] <= pivot) {
                 i++;
             }
-            // Move j backward until we find an element smaller than or equal to pivot
+           
             while (i <= j && A[j] > pivot) {
                 j--;
             }
@@ -20,23 +18,19 @@ public class QuickSort {
                 swap(A, i, j);
             }
         } while (i < j);
-
         // Place the pivot in its correct position
         swap(A, low, j);
-
         return j; // Return pivot's new index
     }
 
-    // Recursive QuickSort function
     public void quicksort(int A[], int low, int high) {
         if (low < high) {
-            int pi = partition(A, low, high); // Partition index
-            quicksort(A, low, pi - 1);        // Sort left subarray
-            quicksort(A, pi + 1, high);       // Sort right subarray
+            int pi = partition(A, low, high); 
+            quicksort(A, low, pi - 1);        
+            quicksort(A, pi + 1, high);  
         }
     }
 
-    // Utility method to swap two elements in the array
     public void swap(int A[], int i, int j) {
         int temp = A[i];
         A[i] = A[j];

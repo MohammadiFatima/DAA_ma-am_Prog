@@ -2,61 +2,49 @@ import java.util.*;
 
 public class BFS {
 
-    public int vertices;   // Number of vertices in the graph
-    public int adjMat[][]; // Adjacency matrix representation of the graph
-
-    // Constructor: Initializes the graph
+    public int vertices;   
+    public int adjMat[][]; 
+    public int visited[];
+    
     public BFS() {
-        vertices = 8; // Graph has 8 vertices (0 to 7)
-
-        // Adjacency matrix representation of the graph
+        vertices = 8; 
+        visited = new int[vertices];
         adjMat = new int[][]{
-            {0, 1, 1, 0, 0, 0, 0, 0}, // Edges from vertex 0
-            {1, 0, 0, 1, 1, 0, 0, 0}, // Edges from vertex 1
-            {1, 0, 0, 0, 0, 1, 1, 0}, // Edges from vertex 2
-            {0, 1, 0, 0, 0, 0, 0, 1}, // Edges from vertex 3
-            {0, 1, 0, 0, 0, 0, 0, 1}, // Edges from vertex 4
-            {0, 0, 1, 0, 0, 0, 0, 1}, // Edges from vertex 5
-            {0, 0, 1, 0, 0, 0, 0, 1}, // Edges from vertex 6
-            {0, 0, 0, 1, 1, 1, 1, 0}  // Edges from vertex 7
+            {0, 1, 1, 0, 0, 0, 0, 0}, 
+            {1, 0, 0, 1, 1, 0, 0, 0}, 
+            {1, 0, 0, 0, 0, 1, 1, 0}, 
+            {0, 1, 0, 0, 0, 0, 0, 1}, 
+            {0, 1, 0, 0, 0, 0, 0, 1}, 
+            {0, 0, 1, 0, 0, 0, 0, 1}, 
+            {0, 0, 1, 0, 0, 0, 0, 1}, 
+            {0, 0, 0, 1, 1, 1, 1, 0}  
         };
     }
 
-    // Breadth-First Search starting from vertex s
-    public void bfs(int s) {
-        int i = s; // Starting vertex
-
-        // Create a queue to hold vertices to be explored
+    
+    public void bfs(int s) { 
+        int i = s; 
         Queue<Integer> q = new LinkedList<Integer>();
-
-        // Array to track visited vertices
-        int visited[] = new int[vertices];
-
-        // Visit the starting vertex
         System.out.print(i + " ");
-        visited[i] = 1; // Mark as visited
-        q.add(i);       // Add to the queue
+        visited[i] = 1;
+        q.add(i);       
 
-        // Continue until queue is empty
         while (!q.isEmpty()) {
-            i = q.remove(); // Remove the front element from the queue
+            i = q.remove();
 
-            // Check all possible neighbors of vertex i
             for (int j = 0; j < vertices; j++) {
-                // If there is an edge and vertex j is unvisited
+                
                 if (adjMat[i][j] == 1 && visited[j] == 0) {
-                    System.out.print(j + " "); // Visit vertex j
-                    visited[j] = 1;            // Mark it as visited
-                    q.add(j);                  // Add it to the queue
+                    System.out.print(j + " ");
+                    visited[j] = 1;            
+                    q.add(j);                  
                 }
             }
         }
     }
-
-    // Main method to test BFS
     public static void main(String args[]) {
-        BFS b = new BFS(); // Create BFS graph instance
+        BFS b = new BFS();
         System.out.println("BFS:");
-        b.bfs(0); // Start BFS from vertex 0
+        b.bfs(0);
     }
 }
