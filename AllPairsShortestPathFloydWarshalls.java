@@ -15,7 +15,7 @@ public class AllPairsShortestPathFloydWarshalls {
             {3, INF, 0}   
         };
 
-        // Initialize A matrix (will hold intermediate shortest path results)
+        
         A = new int[n][n];
     }
 
