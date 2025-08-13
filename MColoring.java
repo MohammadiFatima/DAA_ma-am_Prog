@@ -7,6 +7,7 @@ public class MColoring{
         {1, 1, 0, 1},
          {1, 0, 1, 0}
     };
+    
     static int n=G.length;
     static int x[]= new int [n];
     static int m=3;
