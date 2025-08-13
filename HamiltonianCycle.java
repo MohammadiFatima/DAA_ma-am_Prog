@@ -36,10 +36,9 @@ public class HamiltonianCycle {
 
     static void nextValue(int k) {
         while (true) {
-            x[k] = (x[k] + 1) % (n + 1); // try next vertex
-            if (x[k] == 0) return; // no more vertices to try
+            x[k] = (x[k] + 1) % (n + 1); 
+            if (x[k] == 0) return; 
 
-            // check if adjacent to previous vertex
             if (G[x[k - 1] - 1][x[k] - 1] != 0) {
                 int j;
                 for (j = 1; j < k; j++) {
